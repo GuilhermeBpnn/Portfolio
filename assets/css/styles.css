@@ -797,6 +797,40 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   .nav__menu{ right: 14px; width: calc(100% - 28px); }
 }
 
+#waFloat{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 800;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(18, 255, 170, .12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+  color: var(--text);
+  transition: transform .15s ease, opacity .15s ease;
+}
+#waFloat:hover{ transform: translateY(-2px); }
+#waFloat:active{ transform: translateY(0); opacity: .9; }
+#waFloat .waFloat__text{ font-size: 13px; letter-spacing: .02em; }
+
+@media (max-width: 520px){
+  #waFloat{
+    right: 14px;
+    bottom: 14px;
+    padding: 12px 14px;
+  }
+  #waFloat .waFloat__text{ display:none; }
+}
+
+
 .result__k{color:var(--muted);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.12em}
 .result__v{margin-top:8px;font-weight:900;letter-spacing:-.02em;font-size:22px}
 .result__p{margin:10px 0 0;color:var(--muted);line-height:1.65}
