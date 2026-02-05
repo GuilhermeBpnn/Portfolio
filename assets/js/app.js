@@ -503,6 +503,7 @@ function initWhatsAppFloatingButton() {
   a.target = "_blank";
   a.rel = "noopener";
   a.setAttribute("aria-label", "Chamar no WhatsApp");
+  a.setAttribute("data-tooltip", "Chamar no WhatsApp");
 
   a.innerHTML = `
   <span class="waFloat__icon" aria-hidden="true">
@@ -517,6 +518,27 @@ function initWhatsAppFloatingButton() {
   document.body.appendChild(a);
 }
 
+
+/* =========================
+   Floating button visibility (hide on Contact)
+========================= */
+function initFloatingVisibility() {
+  const btn = $("#waFloat");
+  const contact = $("#contato");
+  if (!btn || !contact) return;
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      const ent = entries[0];
+      if (!ent) return;
+      btn.classList.toggle("is-hidden", ent.isIntersecting);
+    },
+    { threshold: 0.25 }
+  );
+
+  io.observe(contact);
+}
+
 /* =========================
    Year
 ========================= */
@@ -528,7 +550,7 @@ function initYear() {
 /* =========================
    Boot
 ========================= */
-function main() {
+function main(){
   initTheme();
   initNav();
   initScrollUI();
@@ -541,7 +563,247 @@ function main() {
   initPdf();
   initContact();
   initWhatsAppFloatingButton();
+  initFloatingVisibility();
   initYear();
+
+  // NOVO
+  initReveal();
+  initScrollSpy();
+  initParallaxOrbs();
+  initBackgroundParticles();
 }
+
+/* =========================
+   Reveal on Scroll + Stagger
+========================= */
+function initReveal() {
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
+  // Elementos que queremos animar
+  const targets = [
+    ".section__head",
+    ".card",
+    ".card--hover",
+    ".project",
+    ".stat",
+    ".badge",
+    ".result",
+    ".timeline__item",
+    ".metric",
+    ".note",
+    ".mini-gallery__card",
+    ".info-card"
+  ];
+
+  const els = $$(targets.join(","))
+    .filter((el) => !el.classList.contains("reveal"))
+    .map((el) => {
+      el.classList.add("reveal");
+      return el;
+    });
+
+  if (!els.length) return;
+
+  // Stagger por “linha”/grupo (mesmo parent)
+  const grouped = new Map();
+  els.forEach((el) => {
+    const key = el.parentElement || document.body;
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(el);
+  });
+
+  grouped.forEach((arr) => {
+    arr.forEach((el, i) => el.style.setProperty("--stagger", String(i)));
+  });
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((ent) => {
+        if (ent.isIntersecting) {
+          ent.target.classList.add("is-inview");
+          io.unobserve(ent.target);
+        }
+      });
+    },
+    { threshold: 0.16, rootMargin: "0px 0px -10% 0px" }
+  );
+
+  els.forEach((el) => io.observe(el));
+}
+
+/* =========================
+   ScrollSpy (menu ativo)
+========================= */
+function initScrollSpy() {
+  const links = $$(".nav__link[href^='#']");
+  if (!links.length) return;
+
+  const sections = links
+    .map((a) => $(a.getAttribute("href")))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach((a) => {
+      const on = a.getAttribute("href") === `#${id}`;
+      a.classList.toggle("is-active", on);
+    });
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visible?.target?.id) setActive(visible.target.id);
+    },
+    { threshold: [0.2, 0.35, 0.5, 0.65], rootMargin: "-10% 0px -55% 0px" }
+  );
+
+  sections.forEach((s) => io.observe(s));
+}
+
+/* =========================
+   Parallax suave (Hero orbs)
+========================= */
+function initParallaxOrbs() {
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
+  const orbA = $(".orb--a");
+  const orbB = $(".orb--b");
+  if (!orbA && !orbB) return;
+
+  const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+  const onMove = (e) => {
+    const x = (e.clientX / window.innerWidth) * 2 - 1;  // -1..1
+    const y = (e.clientY / window.innerHeight) * 2 - 1; // -1..1
+
+    const ax = clamp(x * 10, -12, 12);
+    const ay = clamp(y * 10, -12, 12);
+    const bx = clamp(x * -14, -16, 16);
+    const by = clamp(y * -14, -16, 16);
+
+    if (orbA) orbA.style.transform = `translate3d(${ax}px, ${ay}px, 0)`;
+    if (orbB) orbB.style.transform = `translate3d(${bx}px, ${by}px, 0)`;
+  };
+
+  window.addEventListener("mousemove", onMove, { passive: true });
+}
+
+/* =========================
+   Background Particles (Data Flow)
+   - leve, sem libs
+========================= */
+function initBackgroundParticles() {
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
+  const mountIn = (selector) => {
+    const host = $(selector);
+    if (!host) return null;
+
+    // Evita duplicar
+    if (host.querySelector("canvas.bgfx")) return null;
+
+    const c = document.createElement("canvas");
+    c.className = "bgfx";
+    host.prepend(c);
+    return { host, c };
+  };
+
+  const nodesA = mountIn(".hero");
+  const nodesB = mountIn("#sobre"); // seu “Sobre”
+  const mounts = [nodesA, nodesB].filter(Boolean);
+  if (!mounts.length) return;
+
+  mounts.forEach(({ host, c }) => {
+    const ctx = c.getContext("2d");
+    let w = 0, h = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
+
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const pts = [];
+    const count = window.innerWidth < 520 ? 18 : 34;
+
+    const resize = () => {
+      const r = host.getBoundingClientRect();
+      w = Math.max(1, Math.floor(r.width));
+      h = Math.max(1, Math.floor(r.height));
+      c.width = Math.floor(w * dpr);
+      c.height = Math.floor(h * dpr);
+      c.style.width = `${w}px`;
+      c.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      pts.length = 0;
+      for (let i = 0; i < count; i++) {
+        pts.push({
+          x: rand(0, w),
+          y: rand(0, h),
+          vx: rand(-0.25, 0.25),
+          vy: rand(-0.18, 0.18),
+          r: rand(1.2, 2.2)
+        });
+      }
+    };
+
+    const step = () => {
+      ctx.clearRect(0, 0, w, h);
+
+      // fundo sutil “neon haze”
+      const g = ctx.createRadialGradient(w * 0.2, h * 0.2, 0, w * 0.2, h * 0.2, Math.max(w, h));
+      g.addColorStop(0, "rgba(80,160,255,0.10)");
+      g.addColorStop(0.55, "rgba(175,90,255,0.06)");
+      g.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
+
+      // move pontos
+      for (const p of pts) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < -20) p.x = w + 20;
+        if (p.x > w + 20) p.x = -20;
+        if (p.y < -20) p.y = h + 20;
+        if (p.y > h + 20) p.y = -20;
+      }
+
+      // linhas (conexões)
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const a = pts[i], b = pts[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 140) {
+            const alpha = (1 - dist / 140) * 0.22;
+            ctx.strokeStyle = `rgba(120, 190, 255, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // pontos
+      for (const p of pts) {
+        ctx.fillStyle = "rgba(200, 230, 255, 0.75)";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      requestAnimationFrame(step);
+    };
+
+    resize();
+    step();
+    window.addEventListener("resize", debounce(resize, 120), { passive: true });
+  });
+}
+
 
 document.addEventListener("DOMContentLoaded", main);

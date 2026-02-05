@@ -847,8 +847,163 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
 
 #waFloat{ color: #d7ffe9; }
 
+/* =========================
+   Motion System (leve)
+========================= */
+:root{
+  --reveal-y: 18px;
+  --reveal-dur: 700ms;
+  --reveal-ease: cubic-bezier(.2,.8,.2,1);
+}
+
+/* Respeita acessibilidade */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Reveal */
+.reveal{
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0);
+  filter: blur(10px);
+  transition:
+    opacity var(--reveal-dur) var(--reveal-ease),
+    transform var(--reveal-dur) var(--reveal-ease),
+    filter var(--reveal-dur) var(--reveal-ease);
+  transition-delay: calc(var(--stagger, 0) * 80ms);
+  will-change: opacity, transform, filter;
+}
+.reveal.is-inview{
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  filter: blur(0);
+}
+
+/* Hover microinteractions (padrão) */
+.card--hover, .project, .info-card{
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.card--hover:hover, .project:hover, .info-card:hover{
+  transform: translateY(-3px);
+}
+
+/* Botões com “press” mais gostoso */
+.btn{
+  transition: transform 120ms ease, opacity 120ms ease, box-shadow 180ms ease;
+}
+.btn:active{
+  transform: translateY(1px);
+  opacity: .95;
+}
+
+/* Scrollspy: link ativo no menu */
+.nav__link.is-active{
+  color: var(--text);
+  position: relative;
+}
+.nav__link.is-active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:100%;
+  height:2px;
+  border-radius:2px;
+  background: linear-gradient(90deg, rgba(80,160,255,.0), rgba(80,160,255,.8), rgba(175,90,255,.0));
+  opacity:.9;
+}
+
+/* Parallax orbs (suave) */
+.orb{
+  will-change: transform;
+}
+
+/* =========================
+   Background Particles (Canvas)
+========================= */
+.bgfx{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.55;
+}
+.hero, #sobre{
+  position: relative;
+}
+.hero > .container,
+#sobre > .container{
+  position: relative;
+  z-index: 1; /* conteúdo acima do canvas */
+}
+
+
 .result__k{color:var(--muted);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.12em}
 .result__v{margin-top:8px;font-weight:900;letter-spacing:-.02em;font-size:22px}
 .result__p{margin:10px 0 0;color:var(--muted);line-height:1.65}
 @media (max-width:520px){.hero{padding-top:54px}.hero__cta .btn{width:100%;justify-content:center}.stat{width:100%}.section{padding:64px 0}.section__title{font-size:28px}.hero__subtitle{font-size:15px}.nav__menu{right:14px;width:calc(100% - 28px)}}
 @media print{.header,.scroll-progress,.toast,.modal,#downloadPdf,#downloadPdf2,#backToTop,.nav{display:none!important}body{background:#fff!important;color:#111!important}.card,.metric,.info-card,.cta-box,.about__card,.kv{box-shadow:none!important}a{text-decoration:none!important}}
+
+
+/* Contact trust microcopy */
+.contact__trust{
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.contact__trust strong{ color: var(--text); font-weight: 600; }
+
+/* Hero availability pill */
+.hero__availability{
+  margin-top: 12px;
+  display: inline-flex;
+}
+
+/* WhatsApp floating refinements */
+#waFloat{
+  transition: transform .15s ease, opacity .15s ease;
+}
+#waFloat.is-hidden{
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+#waFloat[data-tooltip]::after{
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  background: rgba(10,14,24,.92);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.14);
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .15s ease, transform .15s ease;
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+#waFloat:hover::after{
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 520px){
+  #waFloat:hover::after{ display:none; }
+}
+
+/* Subtle pulse on mobile (unless reduced motion) */
+@media (max-width: 520px){
+  @media (prefers-reduced-motion: no-preference){
+    #waFloat{ animation: waPulse 2.6s ease-in-out infinite; }
+    @keyframes waPulse{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-2px); }
+    }
+  }
+}
