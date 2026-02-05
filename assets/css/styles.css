@@ -830,6 +830,22 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   #waFloat .waFloat__text{ display:none; }
 }
 
+#waFloat .waFloat__icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(18, 255, 170, .18);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+#waFloat svg{
+  display:block;
+}
+
+#waFloat{ color: #d7ffe9; }
 
 .result__k{color:var(--muted);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.12em}
 .result__v{margin-top:8px;font-weight:900;letter-spacing:-.02em;font-size:22px}
