@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Guilherme Ataides — Programador | UI/UX | Sites, automações, bots e consultoria. Portfólio com projetos como NeonCore e automações corporativas." />
+  <meta name="theme-color" content="#0b0f1a" />
+  <title>Guilherme Ataides — Serviços & Portfólio</title>
+
+  <meta property="og:title" content="Guilherme Ataides — Serviços & Portfólio" />
+  <meta property="og:description" content="Sites premium, UI/UX, automações e bots para acelerar processos e gerar resultado." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress__bar" id="scrollBar"></div>
+  </div>
+
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a class="brand" href="#topo" aria-label="Voltar ao topo">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">Guilherme<span class="brand__accent">Ataides</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="nav__toggleLines" aria-hidden="true"></span>
+          <span class="sr-only">Abrir menu</span>
+        </button>
+
+        <div class="nav__menu" id="navMenu">
+          <a class="nav__link" href="#servicos">Serviços</a>
+          <a class="nav__link" href="#portfolio">Portfólio</a>
+          <a class="nav__link" href="#sobre">Sobre</a>
+          <a class="nav__link" href="#depoimentos">Depoimentos</a>
+          <a class="nav__link" href="#contato">Contato</a>
+
+          <button class="btn btn--ghost nav__theme" id="themeToggle" type="button" aria-label="Alternar tema">
+            <span class="icon" aria-hidden="true">☾</span>
+            <span class="nav__themeText">Tema</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="pill pill--glow">
+            <span class="dot" aria-hidden="true"></span>
+            Programador • UI/UX • Automações • Bots
+          </p>
+
+          <h1 class="hero__title">
+            Eu sou <span class="text-gradient">Guilherme Ataides</span> — construo sites e automações com padrão premium.
+          </h1>
+
+          <p class="hero__subtitle">
+            Do institucional à landing page, de bots corporativos a plataformas completas (como a NeonCore):
+            entrego solução com design forte, performance e foco em resultado.
+          </p>
+
+         <div class="hero__cta">
+          <a class="btn btn--primary" href="#contato">
+          Solicitar orçamento
+            <span class="btn__shine" aria-hidden="true"></span>
+          </a>
+          <a class="btn btn--soft" href="#portfolio">Ver projetos</a>
+         <button class="btn btn--ghost" id="downloadPdf" type="button">Baixar portfólio (PDF)</button>
+         </div>
+
+
+          <div class="hero__stats" role="list" aria-label="Estatísticas">
+            <div class="stat" role="listitem">
+              <div class="stat__num" data-count="40">0</div>
+              <div class="stat__label">Projetos e entregas</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="stat__num" data-count="1000">0</div>
+              <div class="stat__label">Empresas monitoradas (bot)</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="stat__num" data-count="7">0</div>
+              <div class="stat__label">Dias médios p/ MVP</div>
+            </div>
+          </div>
+
+          <div class="hero__badges" aria-label="Diferenciais">
+            <span class="badge">🎨 UI/UX Premium</span>
+            <span class="badge">⚡ Performance</span>
+            <span class="badge">🤖 Bots e Automações</span>
+            <span class="badge">🧠 Consultoria</span>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="orb orb--a"></div>
+          <div class="orb orb--b"></div>
+
+          <div class="glass-card">
+            <div class="glass-card__top">
+              <div class="mini-dot"></div><div class="mini-dot"></div><div class="mini-dot"></div>
+              <span class="glass-card__title">NeonCore • Plataforma</span>
+            </div>
+            <div class="glass-card__body">
+              <div class="skeleton sk-1"></div>
+              <div class="skeleton sk-2"></div>
+              <div class="skeleton sk-3"></div>
+              <div class="sparkline">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-chip chip--1">+ UI/UX</div>
+          <div class="floating-chip chip--2">+ Automação</div>
+          <div class="floating-chip chip--3">+ Performance</div>
+        </div>
+      </div>
+
+      <div class="hero__marquee" aria-hidden="true">
+        <div class="marquee">
+          <span>Sites • Landing Pages • UI/UX • Suporte • Bots • Automação • Consultoria • </span>
+          <span>Sites • Landing Pages • UI/UX • Suporte • Bots • Automação • Consultoria • </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Serviços</h2>
+          <p class="section__subtitle">
+            Entrego desde um site bonito e rápido até automações que economizam horas por semana.
+          </p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card card--hover">
+            <div class="card__icon" aria-hidden="true">🌐</div>
+            <h3 class="card__title">Sites de todos os tipos</h3>
+            <p class="card__text">Institucional, portfólio, multi-serviços, páginas internas e estrutura escalável.</p>
+            <ul class="list">
+              <li>Responsivo e rápido</li>
+              <li>SEO básico e boas práticas</li>
+              <li>Estrutura para expansão</li>
+            </ul>
+          </article>
+
+          <article class="card card--hover">
+            <div class="card__icon" aria-hidden="true">🎨</div>
+            <h3 class="card__title">Design UI/UX</h3>
+            <p class="card__text">Layout com hierarquia visual, clareza e padrão premium (sem “cara de template”).</p>
+            <ul class="list">
+              <li>Componentes consistentes</li>
+              <li>Melhor experiência do usuário</li>
+              <li>Mais confiança e conversão</li>
+            </ul>
+          </article>
+
+          <article class="card card--hover">
+            <div class="card__icon" aria-hidden="true">🤖</div>
+            <h3 class="card__title">Bots e automações</h3>
+            <p class="card__text">Robôs para monitorar, coletar, validar e registrar dados de forma confiável.</p>
+            <ul class="list">
+              <li>Monitoramento e alertas</li>
+              <li>Integração com sistemas</li>
+              <li>Logs e rastreabilidade</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="section__foot">
+          <div class="cta-box">
+            <div>
+              <h3 class="cta-box__title">Suporte e consultoria</h3>
+              <p class="cta-box__text">Análise técnica, melhorias, correções, otimização e roadmap do produto.</p>
+            </div>
+            <a class="btn btn--primary" href="#contato">Falar comigo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="portfolio">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Portfólio</h2>
+          <p class="section__subtitle">Projetos reais (ajusto o texto para “caso de sucesso” se você quiser).</p>
+        </div>
+
+        <div class="portfolio__controls">
+          <div class="chips" role="tablist" aria-label="Filtro do portfólio">
+            <button class="chip is-active" type="button" data-filter="all" role="tab" aria-selected="true">Todos</button>
+            <button class="chip" type="button" data-filter="plataforma" role="tab" aria-selected="false">Plataforma</button>
+            <button class="chip" type="button" data-filter="landing" role="tab" aria-selected="false">Landing</button>
+            <button class="chip" type="button" data-filter="bot" role="tab" aria-selected="false">Bots</button>
+          </div>
+
+          <div class="search">
+            <label class="sr-only" for="portfolioSearch">Buscar projeto</label>
+            <input id="portfolioSearch" class="search__input" type="search" placeholder="Buscar por nome, tag..." />
+          </div>
+           <button class="btn btn--ghost" id="downloadPdf2" type="button">Baixar PDF</button>
+        </div>
+
+        <div class="grid grid--3" id="portfolioGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="resultados">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">Resultados</h2>
+      <p class="section__subtitle">
+        Impacto prático em projetos: performance, automação e redução de retrabalho.
+      </p>
+    </div>
+
+    <div class="grid grid--3">
+      <article class="card card--hover result">
+        <div class="result__k">Escala</div>
+        <div class="result__v">1000+ empresas</div>
+        <p class="result__p">Monitoramento automatizado de vencimentos de certificados com histórico e rastreabilidade.</p>
+      </article>
+
+      <article class="card card--hover result">
+        <div class="result__k">Operação</div>
+        <div class="result__v">Menos falhas manuais</div>
+        <p class="result__p">Bots que ativam/desativam coletas de NFs em sistema próprio, seguindo regras e logs.</p>
+      </article>
+
+      <article class="card card--hover result">
+        <div class="result__k">Produto</div>
+        <div class="result__v">NeonCore</div>
+        <p class="result__p">Plataforma em evolução para serviços e pedidos com UI/UX premium e estrutura escalável.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+    <section class="section" id="sobre">
+      <div class="container about">
+        <div class="about__left">
+          <div class="section__head">
+            <h2 class="section__title">Sobre</h2>
+            <p class="section__subtitle">
+              Programador com foco em UI/UX + automação — construindo soluções que ficam bonitas e funcionam de verdade.
+            </p>
+          </div>
+
+          <div class="about__card">
+            <p class="lead">
+              Eu gosto de entregar projetos “de ponta a ponta”: entender a regra de negócio, estruturar o fluxo,
+              criar a interface e implementar com um código que dá para manter.
+            </p>
+
+            <div class="stack">
+              <span class="tag">UI/UX</span>
+              <span class="tag">Front-end</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Automação</span>
+              <span class="tag">Bots</span>
+              <span class="tag">Consultoria</span>
+            </div>
+
+            <div class="timeline" aria-label="Etapas do processo">
+              <div class="timeline__item">
+                <span class="timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <strong>1. Diagnóstico</strong>
+                  <p>Objetivo, prazo, escopo, conteúdo e métricas.</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <span class="timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <strong>2. UX/UI</strong>
+                  <p>Wireframe, layout, componentes, identidade visual.</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <span class="timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <strong>3. Implementação</strong>
+                  <p>Front-end, integrações, automações, validações e logs.</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <span class="timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <strong>4. Entrega e suporte</strong>
+                  <p>Deploy, ajustes, monitoramento e evolução.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__right">
+          <div class="metrics">
+            <div class="metric">
+              <span class="metric__k">Padrão</span>
+              <span class="metric__v">UI/UX consistente</span>
+            </div>
+            <div class="metric">
+              <span class="metric__k">Confiabilidade</span>
+              <span class="metric__v">Logs e rastreabilidade</span>
+            </div>
+            <div class="metric">
+              <span class="metric__k">Entrega</span>
+              <span class="metric__v">MVP rápido e evolutivo</span>
+            </div>
+          </div>
+
+          <div class="note">
+            <div class="note__icon" aria-hidden="true">💡</div>
+            <div>
+              <strong>Personalização rápida:</strong>
+              <p>Troque textos, links e projetos dentro do <code>app.js</code> (tudo centralizado).</p>
+            </div>
+          </div>
+
+          <div class="mini-gallery" aria-hidden="true">
+            <div class="mini-gallery__card"></div>
+            <div class="mini-gallery__card"></div>
+            <div class="mini-gallery__card"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="depoimentos">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Depoimentos</h2>
+          <p class="section__subtitle">Exemplos — você pode trocar por prints/reviews reais.</p>
+        </div>
+
+        <div class="carousel" aria-roledescription="carrossel">
+          <div class="carousel__track" id="testimonialsTrack"></div>
+
+          <div class="carousel__controls">
+            <button class="btn btn--ghost" id="prevTestimonial" type="button" aria-label="Depoimento anterior">←</button>
+            <div class="carousel__dots" id="testimonialsDots" aria-hidden="true"></div>
+            <button class="btn btn--ghost" id="nextTestimonial" type="button" aria-label="Próximo depoimento">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Perguntas frequentes</h2>
+          <p class="section__subtitle">Como eu trabalho, sem enrolação.</p>
+        </div>
+
+        <div class="accordion" id="faqAccordion">
+          <button class="accordion__item" type="button" aria-expanded="false">
+            <span class="accordion__q">Você faz “só o site” ou também automação?</span>
+            <span class="accordion__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion__panel" hidden>
+            <p>Faço os dois. Sites/landing pages e também bots e automações integradas com sistemas.</p>
+          </div>
+
+          <button class="accordion__item" type="button" aria-expanded="false">
+            <span class="accordion__q">Quanto tempo para entregar?</span>
+            <span class="accordion__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion__panel" hidden>
+            <p>Depende do escopo. Um site/landing costuma levar de 5 a 15 dias úteis. Bots variam conforme integrações e regras.</p>
+          </div>
+
+          <button class="accordion__item" type="button" aria-expanded="false">
+            <span class="accordion__q">Você dá suporte depois?</span>
+            <span class="accordion__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion__panel" hidden>
+            <p>Sim. Posso ficar com manutenção, evoluções e monitoramento do que foi entregue.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="contato">
+      <div class="container contact">
+        <div class="contact__left">
+          <div class="section__head">
+            <h2 class="section__title">Contato</h2>
+            <p class="section__subtitle">Me conte o objetivo e o prazo. Eu retorno com proposta e etapas.</p>
+          </div>
+
+          <div class="contact__cards">
+            <div class="info-card">
+              <div class="info-card__icon" aria-hidden="true">📩</div>
+              <div>
+                <strong>E-mail</strong>
+                <p>
+                  <button class="link-like" type="button" id="copyEmail" data-copy="seuemail@exemplo.com">
+                    seuemail@exemplo.com
+                  </button>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card__icon" aria-hidden="true">💬</div>
+              <div>
+                <strong>WhatsApp</strong>
+                <p><a class="link" href="https://wa.me/5500000000000" id="waLink" target="_blank" rel="noopener">Clique para chamar</a></p>
+              </div>
+            </div>
+
+            <div class="info-card">
+  <div class="info-card__icon" aria-hidden="true">🔗</div>
+  <div>
+    <strong>GitHub</strong>
+    <p><a class="link" href="https://github.com/GuilhermeBpnn" target="_blank" rel="noopener">@GuilhermeBpnn</a></p>
+  </div>
+</div>
+          </div>
+        </div>
+
+        <div class="contact__right">
+          <form class="form" id="contactForm" novalidate>
+            <div class="form__row">
+              <div class="field">
+                <label for="name">Nome</label>
+                <input id="name" name="name" type="text" autocomplete="name" required minlength="2" placeholder="Seu nome" />
+                <small class="field__error" data-error-for="name"></small>
+              </div>
+
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@exemplo.com" />
+                <small class="field__error" data-error-for="email"></small>
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="field">
+                <label for="service">Tipo de serviço</label>
+                <select id="service" name="service" required>
+                  <option value="">Selecione</option>
+                  <option>Site institucional</option>
+                  <option>Landing page</option>
+                  <option>Bots / automações</option>
+                  <option>Consultoria / suporte</option>
+                </select>
+                <small class="field__error" data-error-for="service"></small>
+              </div>
+
+              <div class="field">
+                <label for="budget">Orçamento estimado</label>
+                <select id="budget" name="budget" required>
+                  <option value="">Selecione</option>
+                  <option>R$ 1.000 - 2.000</option>
+                  <option>R$ 2.000 - 5.000</option>
+                  <option>R$ 5.000+</option>
+                </select>
+                <small class="field__error" data-error-for="budget"></small>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" required minlength="10" placeholder="Objetivo, prazo, referências, páginas, integrações..."></textarea>
+              <small class="field__error" data-error-for="message"></small>
+            </div>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">
+                Enviar mensagem
+                <span class="btn__shine" aria-hidden="true"></span>
+              </button>
+              <p class="form__hint">Envio simulado — integre com backend quando quiser.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <a class="brand brand--small" href="#topo">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span class="brand__text">Neon<span class="brand__accent">Core</span></span>
+          </a>
+          <p class="muted">© <span id="year"></span> • Guilherme Ataides • JavaScript puro.</p>
+        </div>
+
+        <div class="footer__links">
+          <a class="link" href="#servicos">Serviços</a>
+          <a class="link" href="#portfolio">Portfólio</a>
+          <a class="link" href="#contato">Contato</a>
+          <button class="btn btn--ghost" id="backToTop" type="button">Voltar ao topo ↑</button>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__content" role="document" aria-label="Detalhes do projeto">
+      <button class="modal__close" type="button" aria-label="Fechar" data-modal-close>✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="./assets/js/app.js" defer></script>
+</body>
+</html>
