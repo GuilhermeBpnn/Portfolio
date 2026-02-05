@@ -796,3 +796,9 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   .hero__subtitle{ font-size: 15px; }
   .nav__menu{ right: 14px; width: calc(100% - 28px); }
 }
+
+.result__k{color:var(--muted);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.12em}
+.result__v{margin-top:8px;font-weight:900;letter-spacing:-.02em;font-size:22px}
+.result__p{margin:10px 0 0;color:var(--muted);line-height:1.65}
+@media (max-width:520px){.hero{padding-top:54px}.hero__cta .btn{width:100%;justify-content:center}.stat{width:100%}.section{padding:64px 0}.section__title{font-size:28px}.hero__subtitle{font-size:15px}.nav__menu{right:14px;width:calc(100% - 28px)}}
+@media print{.header,.scroll-progress,.toast,.modal,#downloadPdf,#downloadPdf2,#backToTop,.nav{display:none!important}body{background:#fff!important;color:#111!important}.card,.metric,.info-card,.cta-box,.about__card,.kv{box-shadow:none!important}a{text-decoration:none!important}}
